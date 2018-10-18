@@ -2,7 +2,7 @@
 <div class="current" key="home">
 	<div class="content-wrap">
 		<div class="nav-bar-wrap">
-			<nav-bar></nav-bar>
+			<nav-bar :currentIndex="0"></nav-bar>
 		</div>
 		<div class="slide-home-wrap">
 			<slide-service></slide-service>

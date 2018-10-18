@@ -86,3 +86,28 @@ export const handlerError = {
 		}
 	}
 }
+export const handlerNav = {
+	data() {
+		return {
+			
+		}
+	},
+	methods: {
+		goNav(index) {
+			this.currentNavIndex = index;
+			console.log('goNav')
+            switch (index) {
+                case 0:
+                    this.$router.push('/service');
+                    break;
+                case 1:
+                    this.$router.push('/searchVoice');
+                    break;
+                case 2:
+                    this.$router.push('/computedPrice');
+                    break;
+                
+            }
+		}
+	}
+}

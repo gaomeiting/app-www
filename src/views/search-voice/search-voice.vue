@@ -2,7 +2,7 @@
 <div class="current" key="home">
 	<div class="content-wrap">
 		<div class="nav-bar-wrap">
-			<nav-bar></nav-bar>
+			<nav-bar :currentIndex="1"></nav-bar>
 		</div>
 		<div class="slide-home-wrap">
 			<slide-search></slide-search>
@@ -44,13 +44,20 @@ import FooterBar from 'components/footer-bar/footer-bar';
 import SlideSearch from 'components/slide-search/slide-search';
 import Carousel from 'components/carousel/carousel';
 import FloatWindow from 'components/float-window/float-window';
+/* import { handlerNav } from 'assets/js/mixins'; */
 export default {
+	/* mixins: [ handlerNav ], */
 	data() {
 		return {
 			icons: [
 				{ icon: '/search_1.png', text: '让你的声音被更多的人听见 <br> 已有超过2000家客户选择了叮当配'},
 				{ icon: '/search_2.png', text: '严格的声音质量把关，配音晋升体系  <br> 专业的声音经济，让你的声音价值最大化'},
 				{ icon: '/search_3.png', text: '项目准时结款率100% <br> 你不敢想的，我们真的做到了'}
+			],
+			navs: [
+				{name: '服务介绍1'},
+				{name: '寻找声音2'},
+				{name: '价格估算3'}
 			]
 		}
 	},

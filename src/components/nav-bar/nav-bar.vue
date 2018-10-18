@@ -1,13 +1,11 @@
 <template>
 	<div class="nav">
             <div class="left">
-                <figure>
+                <figure @click="goHome">
                     <img src="/logo.png" >
                 </figure>
                 <ul>
-                    <li class="active">服务介绍</li>
-                    <li>寻找声音</li>
-                    <li>价格估算</li>
+                    <li v-for="(nav, index) in navs" @click.stop="goNav(index)"  :class="{'active' : index === currentIndex}">{{ nav.name }}</li>
                 </ul>
             </div>
             
@@ -21,7 +19,43 @@
 </template>
 <script type="text/ecmascript-6">
 export default {
-    
+    data() {
+        return {
+            navs: [
+                {name: '服务介绍'},
+                {name: '寻找声音'},
+                {name: '价格估算'}
+            ],
+            
+        }
+    },
+    props: {
+        currentIndex: {
+            type: Number,
+            default: -1
+        }
+    },
+    methods: {
+        goNav(index) {
+           /*  this.currentIndex = index;
+			console.log('goNav') */
+            switch (index) {
+                case 0:
+                    this.$router.push('/service');
+                    break;
+                case 1:
+                    this.$router.push('/searchVoice');
+                    break;
+                case 2:
+                    this.$router.push('/computedPrice');
+                    break;
+                
+            }
+        },
+        goHome() {
+            this.$router.push('/')
+        }
+    }
 }
 </script>
 
