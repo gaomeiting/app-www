@@ -16,6 +16,20 @@ const routes = [{
   meta: {
     title: '首页'
   }
+}, {
+  name: 'service',
+  component: () =>
+    import ('views/service/service'),
+  meta: {
+    title: '服务介绍'
+  }
+}, {
+  name: 'computedPrice',
+  component: () =>
+    import ('views/computed-price/computed-price'),
+  meta: {
+    title: '价格估算'
+  }
 }];
 
 // add route path
@@ -33,9 +47,7 @@ const router = new Router({
     }
   }
 });
-/* if (window.sessionStorage.getItem('user')) {
-  store.commit('SET_LOGIN', JSON.parse(window.sessionStorage.getItem('user')))
-} */
+
 
 router.beforeEach((to, from, next) => {
   const title = to.meta && to.meta.title;
