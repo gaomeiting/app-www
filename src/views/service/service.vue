@@ -10,10 +10,10 @@
 		<div class="section-wrap">
 			<div class="section icons-wrap">
 				<div class="switches-wrap">
-					<switches :switches="switches"></switches>
+					<switches :switches="switches" :currentIndex="contentIndex" @switchItem="selectItem"></switches>
 				</div>
-				<!-- <transition name="fade" mode="out-in"> -->
-				<ul>
+				<transition name="fade" mode="out-in">
+				<ul key="0" v-if="contentIndex === 0">
 					<li>
 						<div class="info">
 							<h3>发布需求</h3>
@@ -54,7 +54,48 @@
 					</li>
 					
 				</ul>
-				<!-- </transition> -->
+				<ul key="1" v-if="contentIndex === 1">
+					<li>
+						<div class="info">
+							<h3>发布需afsafsdg求</h3>
+							<p>依据内容原型，进行需求分析，定义用户，针对分析确定 <br>
+								产品架构，表现形式等。</p>
+						</div>
+						<figure>
+							<img src="./pic_1.png" alt="">
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="./pic_2.png" alt="">
+						</figure>
+						<div class="info">
+							<h3>配音员选择</h3>
+							<p>智能匹配合适的配音员，多种录制风格尝试，剪辑音乐音 <br>
+								效精品制作。</p>
+						</div>
+					</li>
+					<li>
+						<div class="info">
+							<h3>严格质量把关</h3>
+							<p>95%正确率远高于电台节目主持人标准</p>
+						</div>
+						<figure>
+							<img src="./pic_3.png" alt="">
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="./pic_4.png" alt="">
+						</figure>
+						<div class="info">
+							<h3>版权分发</h3>
+							<p>多家网络电台深度合作，联合主推，增加品牌曝光度</p>
+						</div>
+					</li>
+					
+				</ul>
+				</transition>
 			</div>
 		</div>
 		
@@ -78,14 +119,15 @@ export default {
 			switches: [
 				{ name: '流程介绍' },
 				{ name: '关于我们' }
-			]
+			],
+			contentIndex: 0
 		}
 	},
 	created() {
 	},
 	methods: {
 		selectItem(index) {
-			this.currentIndex = index;
+			this.contentIndex = index;
 		}
 	},
 	components: {

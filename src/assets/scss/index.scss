@@ -5,12 +5,14 @@
 .current {
     padding-bottom: 20px;
 }
-.page {
+.nav-bar-wrap {
+    width: 100%;
+    background-color: #fff;
     position: fixed;
     top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+}
+.current {
+    margin-top: 80px;
 }
 .fade-enter-active, .fade-leave-active {
     opacity: 1;

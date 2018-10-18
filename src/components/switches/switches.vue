@@ -37,6 +37,7 @@ export default {
 	margin: 0 auto;
 	border: 1px solid $color-theme;
 	border-radius: 5px;
+	cursor: pointer;
 	.switch-item {
 		flex: 1;
 		padding: 8px;

@@ -37,6 +37,7 @@ export default {
     },
     methods: {
         goNav(index) {
+            if(this.currentIndex === index) return;
            /*  this.currentIndex = index;
 			console.log('goNav') */
             switch (index) {
@@ -98,7 +99,7 @@ export default {
                 border-bottom: 3px solid $color-theme-d;
                 position: absolute;
                 left: 34%;
-                bottom: 0;
+                bottom: -8px;
             }
 		}
 	}
