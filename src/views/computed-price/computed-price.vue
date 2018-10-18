@@ -10,28 +10,68 @@
 					价格估算
 				</h2>
 				<div class="form-wrap">
-					<div>
-						<h3>语种</h3>
-						<p class="lang">
-							<span>普通话</span>
-							<span>外语/小语种</span>
-							<span>方言/民族语</span>
-						</p>
-					</div>
-					<div>
-						<h3>级别</h3>
-						<!-- <el-select v-model="value" placeholder="请选择">
-							<el-option
-							v-for="item in options"
-							:key="item.value"
-							:label="item.label"
-							:value="item.value">
-							</el-option>
-						</el-select> -->
-						<p>1系最高，7系最低，另有V系为特约老师，需预约</p>
+					<!--从这里开始-->
+					<div class="form_content">
+						<div class="language">
+							<h3>语种</h3>
+							<p class="lang">
+								<span>普通话</span>
+								<span>外语/小语种</span>
+								<span>方言/民族语</span>
+							</p>
+						</div>
+						<!--级别-->
+						<div class="rank">
+							<h3>级别</h3>
+							<a-select defaultValue="a1"
+									  size="large"
+									style="width: 100%">
+								<a-select-option v-for="i in options" :key="i.label">
+									{{i.label}}
+								</a-select-option>
+							</a-select>
+							<p class="rank_description">1系最高，7系最低，另有V系为特约老师，需预约</p>
+						</div>
+						<!--稿件类型-->
+						<div class="rank">
+							<h3>稿件类型</h3>
+							<a-select defaultValue="a1"
+									  size="large"
+									  style="width: 100%">
+								<a-select-option v-for="i in options" :key="i.label">
+									{{i.label}}
+								</a-select-option>
+							</a-select>
+						</div>
+						<!--字数-->
+						<div class="rank">
+							<h3>字数</h3>
+							<a-input defaultValue="a1"
+									  size="large"
+									  style="width: 100%;border-radius: 4px"/>
+							<p class="rank_description">字数统计用word或者wps的字数统计功能</p>
+						</div>
+						<a href="javascript:;" class="btn">计算</a>
+						<div class="form_number">
+							<div class="header_number">
+								<div class="number">
+									<p class="num_title">金额(元)</p>
+									<p class="num_num">1234</p>
+								</div>
+								<div class="line"></div>
+								<div class="number">
+									<p class="num_title">时长</p>
+									<p class="num_num">12:34</p>
+								</div>
+							</div>
+							<p class="num_description">
+								此处费用仅供参考，另外大订单的价格可以再议，详情请
+								<span class="num_to_click">咨询客服</span>
+							</p>
+						</div>
 					</div>
 				</div>
-				<a href="javascript:;" class="btn">计算</a>
+
 			</div>
 		</div>
 		
@@ -49,6 +89,7 @@ import FooterBar from 'components/footer-bar/footer-bar';
 export default {
 	data() {
 		return {
+            value:'',
 			options: [{
 			value: '选项1',
 			label: '黄金糕'
@@ -106,6 +147,7 @@ export default {
 			background-repeat: no-repeat;
 			font-size: 24px;
 			color: $color-text-l;
+			margin-bottom: 0px;
 		}
 		.btn {
 			display: block;
@@ -119,6 +161,84 @@ export default {
 			box-shadow: 1px 1px 4px #FFD101;
 			font-size: $font-size-large;
 			margin: 0 auto;
+		}
+		.form-wrap{
+			background: #ffffff;
+			height: 1008px;
+			.form_content{
+				padding: 0 246px;
+				.language{
+					padding-top: 60px;
+					>h3{
+						margin-bottom: 40px;
+					}
+					.lang{
+
+						>span{
+							box-sizing: border-box;
+							margin-right: 20px;
+							padding: 17px 20px;
+							background: #FFD100;
+							border-radius: 2px;
+							color: #333333;
+						}
+					}
+				}
+				.rank{
+					padding-top: 40px;
+					>h3{
+						margin-bottom: 20px;
+					}
+					.rank_description{
+						font-size: 12px;
+						color: #aaaaaa;
+						margin-top: 10px;
+						margin-bottom: 0px;
+					}
+				}
+				.btn{
+					margin-top: 40px;
+				}
+				.form_number{
+					height: 200px;
+					background: #FCFCFC;
+					border: 1px solid #E5E5E5;
+					border-radius: 4px;
+					margin-top: 80px;
+					.header_number{
+						margin-top: 43px;
+						margin-bottom: 48px;
+						height: 65px;
+						display: flex;
+						justify-content: space-around;
+						.number{
+							text-align: center;
+							width: 49%;
+							.num_title{
+								color: #4A4A4A;
+							}
+							.num_num{
+								font-size: 30px;
+								line-height: 30px;
+								margin-bottom: 0px;
+							}
+
+						}
+						.line{
+							width: 1px;
+							background: #E5E5E5;
+						}
+					}
+					.num_description{
+						text-align: center;
+						.num_to_click{
+							color: #E5A803;
+							font-size: 14px;
+						}
+					}
+				}
+			}
+
 		}
 		
 	}

@@ -30,6 +30,13 @@ const routes = [{
   meta: {
     title: '价格估算'
   }
+}, {
+  name: 'searchVoice',
+  component: () =>
+    import ('views/search-voice/search-voice'),
+  meta: {
+    title: '寻找声音'
+  }
 }];
 
 // add route path
