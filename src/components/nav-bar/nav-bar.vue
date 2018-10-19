@@ -10,7 +10,7 @@
             </div>
             
             <ol>
-                <li>配音员入驻</li>
+                <li @click.stop="goByBubber">配音员入驻</li>
                 <li class="item">登录</li>
                 <li class="item">注册</li>
             </ol>
@@ -26,20 +26,34 @@ export default {
                 {name: '寻找声音'},
                 {name: '价格估算'}
             ],
-            
+            currentIndex: -1
         }
     },
-    props: {
-        currentIndex: {
-            type: Number,
-            default: -1
-        }
+    created() {
+        this.initCurrentIndex();
     },
     methods: {
+        initCurrentIndex() {
+            let hash = window.location.hash;
+            switch (hash) {
+                case '#/home':
+                    this.currentIndex = -1;
+                    break;
+                case '#/service':
+                    this.currentIndex = 0;
+                    break;
+                case '#/searchVoice':
+                    this.currentIndex = 1;
+                    break;
+                case '#/computedPrice':
+                    this.currentIndex = 2;
+                    break;
+                
+            }
+        },
         goNav(index) {
             if(this.currentIndex === index) return;
-           /*  this.currentIndex = index;
-			console.log('goNav') */
+            this.currentIndex = index;
             switch (index) {
                 case 0:
                     this.$router.push('/service');
@@ -54,7 +68,12 @@ export default {
             }
         },
         goHome() {
+            this.currentIndex = -1;
             this.$router.push('/')
+        },
+        goByBubber() {
+            this.currentIndex = -2;
+            this.$router.push('/join')
         }
     }
 }

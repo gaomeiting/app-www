@@ -1,9 +1,6 @@
 <template>
 <div class="current" key="computedPrice">
 	<div class="content-wrap">
-		<div class="nav-bar-wrap">
-			<nav-bar :currentIndex="2"></nav-bar>
-		</div>
 		<div class="section-wrap">
 			<div class="section">
 				<h2>
@@ -76,16 +73,11 @@
 		</div>
 		
 		
-		<div class="footer-bar-wrap">
-			<footer-bar></footer-bar>
-		</div>
 	</div>
 </div>
 	
 </template>
 <script type="text/ecmascript-6">
-import NavBar from 'components/nav-bar/nav-bar';
-import FooterBar from 'components/footer-bar/footer-bar';
 export default {
 	data() {
 		return {
@@ -122,8 +114,6 @@ export default {
 		
 	},
 	components: {
-		NavBar,
-		FooterBar
 	}
 }
 </script>

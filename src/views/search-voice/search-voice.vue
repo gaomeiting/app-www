@@ -1,9 +1,6 @@
 <template>
 <div class="current" key="searchvoice">
 	<div class="content-wrap">
-		<div class="nav-bar-wrap">
-			<nav-bar :currentIndex="1"></nav-bar>
-		</div>
 		<div class="slide-home-wrap">
 			<slide-search></slide-search>
 		</div>
@@ -27,9 +24,6 @@
 				<!-- <p>覆盖几乎全部题材，为您找到最合适的配音员</p> -->
 				<a href="javascript:;" class="btn btm">配音员入驻</a>
 			</div>
-		</div>
-		<div class="footer-bar-wrap">
-			<footer-bar></footer-bar>
 		</div>
 		<!-- <div class="float-window-wrap">
 			<float-window></float-window>

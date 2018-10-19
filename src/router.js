@@ -37,6 +37,13 @@ const routes = [{
   meta: {
     title: '寻找声音'
   }
+}, {
+  name: 'join',
+  component: () =>
+    import ('views/search-voice/search-voice'),
+  meta: {
+    title: '配音员入驻'
+  }
 }];
 
 // add route path

@@ -2,9 +2,7 @@
 <!-- <transition name="fade" mode="out-in"> -->
 <div class="current" key="home">
 	<div class="content-wrap">
-		<div class="nav-bar-wrap">
-			<nav-bar :currentIndex="-1"></nav-bar>
-		</div>
+		
 		<div class="slide-home-wrap">
 			<slide-home></slide-home>
 		</div>
@@ -105,16 +103,13 @@
                 </div>
 			</div>
 		</div>
-		<div class="footer-bar-wrap">
-			<footer-bar></footer-bar>
-		</div>
+		
 	</div>
 </div>
 <!-- </transition>	 -->
 </template>
 <script type="text/ecmascript-6">
-import NavBar from 'components/nav-bar/nav-bar';
-import FooterBar from 'components/footer-bar/footer-bar';
+
 import SlideHome from 'components/slide-home/slide-home';
 import Carousel from 'components/carousel/carousel';
 export default {
@@ -170,10 +165,8 @@ export default {
 		
 	},
 	components: {
-		NavBar,
 		SlideHome,
-		Carousel,
-		FooterBar
+		Carousel
 	}
 }
 </script>
@@ -182,9 +175,7 @@ export default {
 @import "~assets/scss/variable";
 @import "~assets/scss/mixin";
 
-.nav-bar-wrap {
-	
-}
+
 
 .slide-home-wrap {
 	background-color: #543693;

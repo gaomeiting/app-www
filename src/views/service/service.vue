@@ -1,9 +1,7 @@
 <template>
 <div class="current" key="service">
 	<div class="content-wrap">
-		<div class="nav-bar-wrap">
-			<nav-bar :currentIndex="0"></nav-bar>
-		</div>
+		
 		<div class="slide-home-wrap">
 			<slide-service></slide-service>
 		</div>
@@ -12,7 +10,7 @@
 				<div class="switches-wrap">
 					<switches :switches="switches" :currentIndex="contentIndex" @switchItem="selectItem"></switches>
 				</div>
-				<transition name="fade" mode="out-in">
+				<transition name="fadePage" mode="out-in">
 				<ul :key="0" v-if="contentIndex === 0">
 					<li>
 						<div class="info">
@@ -99,15 +97,10 @@
 			</div>
 		</div>
 		
-		<div class="footer-bar-wrap">
-			<footer-bar></footer-bar>
-		</div>
 	</div>
 </div>
 </template>
 <script type="text/ecmascript-6">
-import NavBar from 'components/nav-bar/nav-bar';
-import FooterBar from 'components/footer-bar/footer-bar';
 import SlideService from 'components/slide-service/slide-service';
 import Switches from 'components/switches/switches';
 export default {
@@ -130,9 +123,7 @@ export default {
 		}
 	},
 	components: {
-		NavBar,
 		SlideService,
-		FooterBar,
 		Switches
 	}
 }
