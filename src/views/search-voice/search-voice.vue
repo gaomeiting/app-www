@@ -1,5 +1,5 @@
 <template>
-<div class="current" key="home">
+<div class="current" key="searchvoice">
 	<div class="content-wrap">
 		<div class="nav-bar-wrap">
 			<nav-bar :currentIndex="1"></nav-bar>
@@ -31,9 +31,9 @@
 		<div class="footer-bar-wrap">
 			<footer-bar></footer-bar>
 		</div>
-		<div class="float-window-wrap">
+		<!-- <div class="float-window-wrap">
 			<float-window></float-window>
-		</div>
+		</div> -->
 	</div>
 </div>
 	
@@ -43,7 +43,7 @@ import NavBar from 'components/nav-bar/nav-bar';
 import FooterBar from 'components/footer-bar/footer-bar';
 import SlideSearch from 'components/slide-search/slide-search';
 import Carousel from 'components/carousel/carousel';
-import FloatWindow from 'components/float-window/float-window';
+/* import FloatWindow from 'components/float-window/float-window'; */
 /* import { handlerNav } from 'assets/js/mixins'; */
 export default {
 	/* mixins: [ handlerNav ], */
@@ -72,7 +72,7 @@ export default {
 		SlideSearch,
 		Carousel,
 		FooterBar,
-		FloatWindow
+		/* FloatWindow */
 	}
 }
 </script>

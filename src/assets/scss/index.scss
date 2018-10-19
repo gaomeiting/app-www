@@ -10,9 +10,19 @@
     background-color: #fff;
     position: fixed;
     top: 0;
+    z-index: 8;
+}
+.footer-bar-wrap {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+	background-color: $color-background;
 }
 .current {
     margin-top: 80px;
+    position: relative;
+    padding-bottom: 230px;
+    box-sizing: border-box;
 }
 .fade-enter-active, .fade-leave-active {
     opacity: 1;

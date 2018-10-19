@@ -3,9 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'assets/scss/index.scss';
-import './plugins/element.js'
 import {message, Button, Icon, Layout, Breadcrumb, Dropdown, Menu, Pagination, Steps, DatePicker, Form, Input, InputNumber, Radio, Select, Switch, TimePicker, Upload, Avatar, Badge, Card, List, Popover,Popconfirm, Table, Tag, Tooltip, Modal, Tabs} from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
 Vue.config.productionTip = false
 Vue.component(Button.name, Button)
 Vue.component(Button.Group.name, Button.Group)

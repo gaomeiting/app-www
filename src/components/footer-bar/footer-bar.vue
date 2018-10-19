@@ -118,6 +118,7 @@ export default {
     ul {
         flex: 1;
         font-size: $font-size-small;
+        padding-top: 16px;
         li {
             margin-bottom: 20px;
             &:first-child {

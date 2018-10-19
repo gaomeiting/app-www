@@ -1,5 +1,5 @@
 <template>
-<div class="current" key="home">
+<div class="current" key="computedPrice">
 	<div class="content-wrap">
 		<div class="nav-bar-wrap">
 			<nav-bar :currentIndex="2"></nav-bar>
@@ -23,10 +23,10 @@
 						<!--级别-->
 						<div class="rank">
 							<h3>级别</h3>
-							<a-select defaultValue="a1"
+							<a-select defaultValue="优质主播"
 									  size="large"
 									style="width: 100%">
-								<a-select-option v-for="i in options" :key="i.label">
+								<a-select-option v-for="i in levels" :key="i.label">
 									{{i.label}}
 								</a-select-option>
 							</a-select>
@@ -35,7 +35,7 @@
 						<!--稿件类型-->
 						<div class="rank">
 							<h3>稿件类型</h3>
-							<a-select defaultValue="a1"
+							<a-select defaultValue="普通话"
 									  size="large"
 									  style="width: 100%">
 								<a-select-option v-for="i in options" :key="i.label">
@@ -46,7 +46,7 @@
 						<!--字数-->
 						<div class="rank">
 							<h3>字数</h3>
-							<a-input defaultValue="a1"
+							<a-input defaultValue="100"
 									  size="large"
 									  style="width: 100%;border-radius: 4px"/>
 							<p class="rank_description">字数统计用word或者wps的字数统计功能</p>
@@ -91,20 +91,27 @@ export default {
 		return {
             value:'',
 			options: [{
-			value: '选项1',
-			label: '黄金糕'
+			value: '普通话',
+			label: '普通话'
 			}, {
-			value: '选项2',
-			label: '双皮奶'
+			value: '颁奖类',
+			label: '颁奖类'
 			}, {
-			value: '选项3',
-			label: '蚵仔煎'
+			value: '品牌类',
+			label: '品牌类'
 			}, {
-			value: '选项4',
-			label: '龙须面'
+			value: '电购类',
+			label: '电购类'
+			}],
+			levels: [{
+			value: '优质主播',
+			label: '优质主播'
 			}, {
-			value: '选项5',
-			label: '北京烤鸭'
+			value: '知名主播',
+			label: '知名主播'
+			}, {
+			value: '顶级主播',
+			label: '顶级主播'
 			}],
 			value: ''
 		}

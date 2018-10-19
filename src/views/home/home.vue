@@ -1,4 +1,5 @@
 <template>
+<!-- <transition name="fade" mode="out-in"> -->
 <div class="current" key="home">
 	<div class="content-wrap">
 		<div class="nav-bar-wrap">
@@ -109,7 +110,7 @@
 		</div>
 	</div>
 </div>
-	
+<!-- </transition>	 -->
 </template>
 <script type="text/ecmascript-6">
 import NavBar from 'components/nav-bar/nav-bar';
@@ -184,9 +185,7 @@ export default {
 .nav-bar-wrap {
 	
 }
-.footer-bar-wrap {
-	background-color: $color-background;
-}
+
 .slide-home-wrap {
 	background-color: #543693;
 }

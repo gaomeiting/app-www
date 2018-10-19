@@ -70,7 +70,7 @@ export default {
 	align-items: center;
 	justify-content: space-between;
 	font-size: $font-size-medium-x;
-	color: $color-text-l;
+    color: $color-text-l;
 	.left {
         height: 100%;
 		display: flex;
@@ -78,7 +78,8 @@ export default {
 	}
 	figure {
 		width: 172px;
-		height: 40px;
+        height: 40px;
+        cursor: pointer;
 		img {
 			width: 100%;
 			height: 100%;
@@ -99,7 +100,7 @@ export default {
                 border-bottom: 3px solid $color-theme-d;
                 position: absolute;
                 left: 34%;
-                bottom: -8px;
+                bottom: 0;
             }
 		}
 	}
