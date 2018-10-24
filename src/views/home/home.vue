@@ -70,7 +70,7 @@
                         <textarea cols="100%" rows="6" placeholder="您的需求或您希望了解的内容" maxlength="200"  v-model="form.demand"></textarea>
                     </div>
                 </div>
-				<a href="javascript:;" class="btn">发送</a>
+				<a href="javascript:;" class="btn" @click="submitForm">发送</a>
 			</div>
 		</div>
 		<div class="section-wrap">
@@ -109,7 +109,8 @@
 <!-- </transition>	 -->
 </template>
 <script type="text/ecmascript-6">
-
+import { handlerError } from 'api/catch';
+import { postData } from 'api/api';
 import SlideHome from 'components/slide-home/slide-home';
 import Carousel from 'components/carousel/carousel';
 export default {
@@ -162,7 +163,19 @@ export default {
 	created() {
 	},
 	methods: {
-		
+		submitForm() {
+			postData('/api/consult', {
+					username: this.form.name,
+					companyName: this.form.company,
+					mobile: this.form.phone,
+					email: this.form.email,
+					demandContent: this.form.demand
+			}).then(() => {
+				console.log("成功")
+			}).catch(err => {
+				handlerError(err)
+			})
+		}
 	},
 	components: {
 		SlideHome,

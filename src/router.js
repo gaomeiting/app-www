@@ -1,3 +1,9 @@
+/*
+ * @Author: Cicy 
+ * @Date: 2018-10-22 17:33:31 
+ * @Last Modified by: Cicy.gao
+ * @Last Modified time: 2018-10-24 19:30:20
+ */
 import Vue from "vue"
 import Router from "vue-router"
 import store from './store'
@@ -5,7 +11,6 @@ import {
   getDataHide
 } from 'api/api'
 Vue.use(Router);
-
 const routes = [{
   path: '*',
   redirect: '/home'
@@ -14,35 +19,48 @@ const routes = [{
   component: () =>
     import ('views/home/home'),
   meta: {
-    title: '首页'
+    title: '首页',
+    requireAuth: true
   }
 }, {
   name: 'service',
   component: () =>
     import ('views/service/service'),
   meta: {
-    title: '服务介绍'
+    title: '服务介绍',
+    requireAuth: true
   }
 }, {
   name: 'computedPrice',
   component: () =>
     import ('views/computed-price/computed-price'),
   meta: {
-    title: '价格估算'
+    title: '价格估算',
+    requireAuth: true
   }
 }, {
   name: 'searchVoice',
   component: () =>
     import ('views/search-voice/search-voice'),
   meta: {
-    title: '寻找声音'
+    title: '寻找声音',
+    requireAuth: true
   }
 }, {
   name: 'join',
   component: () =>
     import ('views/search-voice/search-voice'),
   meta: {
-    title: '配音员入驻'
+    title: '配音员入驻',
+    requireAuth: true
+  }
+}, {
+  name: 'selectRole',
+  component: () =>
+    import ('views/select-role/select-role'),
+  meta: {
+    title: '选择角色',
+    requireAuth: true
   }
 }];
 
@@ -50,7 +68,10 @@ const routes = [{
 routes.forEach(route => {
   route.path = route.path || '/' + (route.name || '');
 });
-
+if (window.localStorage.getItem('user')) {
+  let user = JSON.parse(window.localStorage.getItem('user'))
+store.commit('SET_LOGIN', user)
+}
 const router = new Router({
   routes,
   scrollBehavior (to, from, savedPosition) {
@@ -67,9 +88,38 @@ router.beforeEach((to, from, next) => {
   const title = to.meta && to.meta.title;
   if (title) {
     document.title = title;
-    
   }
-  next();
+  if (to.matched.some(r => r.meta.requireAuth)) {
+      if (store.state.user) {
+          next();
+      }
+      else {
+        getDataHide('/api/user/userinfo').then(res => {
+          //window.alert(res.uid)
+          console.log(res)
+          store.commit('SET_LOGIN', res);
+          next();
+        }).catch(err => {
+          handlerErrorRouter(err)
+        })
+      }
+  }
+  else {
+      next();
+  }
 });
-
+export function handlerErrorRouter(err) {
+  if (err) {
+      if(err.status == 401) {
+          store.commit('SET_LOGOUT');
+      }
+      if (err.message) {
+          message.warning(err.message);
+      } else {
+          message.warning(err.error);
+      }
+  } else {
+      message.warning('接口调试中');
+  }
+}
 export default router

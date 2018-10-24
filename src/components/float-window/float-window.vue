@@ -6,10 +6,13 @@
                 <p>快 速 <br>配 音</p>
             </li>
             <li>
-                <i class="iconfont icon-kefu"></i>
-                <p>在 线 <br>客 服</p>
+                <a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODE5MjQ4NF80NDM2MDhfNDAwOTY4Njg2MF8yXw" class="item_a" target="_blank">
+                    <i class="iconfont icon-kefu"></i>
+                    <p>在 线 <br>客 服</p>
+                </a>
             </li>
             <li>
+                
                 <a href="/computedPrice">
                 <i class="iconfont icon-jisuanqi"></i>
                 <p>价 格 <br>计 算</p>
@@ -32,19 +35,14 @@
 <script type="text/ecmascript-6">
 import { BackTop } from 'ant-design-vue';
     export default {
-        data() {
-            return {
-                flag: true
+        props: {
+            flag : {
+                type: Boolean,
+                default: false
             }
         },
-        
-        
         methods: {
-            handleScroll () {
-
-                console.log("handleScroll")
-
-            },
+            
             scrollTop() {
                 document.documentElement.scrollTop = 0;
             }
@@ -95,5 +93,8 @@ import { BackTop } from 'ant-design-vue';
 }
 .float-window li:last-child {
     margin-bottom: 0;
+}
+.float-window li a.item_a {
+    color: #dddddd;
 }
 </style>

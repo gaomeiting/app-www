@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'assets/scss/index.scss';
-import {message, Button, Icon, Layout, Breadcrumb, Dropdown, Menu, Pagination, Steps, DatePicker, Form, Input, InputNumber, Radio, Select, Switch, TimePicker, Upload, Avatar, Badge, Card, List, Popover,Popconfirm, Table, Tag, Tooltip, Modal, Tabs} from 'ant-design-vue'
+import {message, Button, Icon, Layout, Breadcrumb, Dropdown, Menu, Pagination, Steps, DatePicker, Form, Input, InputNumber, Radio, Select, Switch, TimePicker, Upload, Avatar, Badge, Card, List, Popover,Popconfirm, Table, Tag, Tooltip, Modal, Tabs, BackTop} from 'ant-design-vue'
 Vue.config.productionTip = false
 Vue.component(Button.name, Button)
 Vue.component(Button.Group.name, Button.Group)
@@ -65,6 +65,7 @@ Vue.component(Modal.name, Modal)
 Vue.component(Tabs.name, Tabs)
 Vue.component(Tabs.TabPane.name, Tabs.TabPane)
 Vue.component(Tabs.TabContent.name, Tabs.TabContent)
+Vue.component(BackTop.name, BackTop)
 
 new Vue({
 	router,

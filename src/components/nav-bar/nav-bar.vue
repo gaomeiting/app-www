@@ -9,16 +9,23 @@
                 </ul>
             </div>
             
-            <ol>
+            <ol v-if="showRightNav">
                 <li @click.stop="goByBubber">配音员入驻</li>
-                <li class="item">登录</li>
-                <li class="item">注册</li>
+                <li class="item" @click.stop="showAlertBox" v-if="!user">登录</li>
+                <!-- <li class="item">注册</li> -->
             </ol>
     </div>
 	
 </template>
 <script type="text/ecmascript-6">
+import { mapGetters } from 'vuex';
 export default {
+    props: {
+        showRightNav: {
+            type: Boolean,
+            default: true
+        }
+    },
     data() {
         return {
             navs: [
@@ -31,8 +38,34 @@ export default {
     },
     created() {
         this.initCurrentIndex();
+        this.handlerUser()
+    },
+    computed: {
+      ...mapGetters(['user'])
     },
     methods: {
+        showAlertBox() {
+            this.$emit('showAlertBox')
+        },
+        handlerUser() {
+            if(!this.user) {
+                //未登录，没有扫码 -1
+                return;
+            }
+            if(this.user && this.user.roles.length === 1 && this.user.roles.includes('anonymous')) {
+                //游客身份 0
+                return;
+            }
+            if(this.user && (this.user.includes('customer') ||this.user.includes('customer-org') || this.user.includes('customer-person'))) {
+                //需方 1
+                return;
+            }
+            if(this.user && (this.user.includes('dubber-person') || this.user.includes('dubber-team'))) {
+                //配音员 2
+                return;
+            }
+            
+        },
         initCurrentIndex() {
             let hash = window.location.hash;
             switch (hash) {

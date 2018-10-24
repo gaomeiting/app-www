@@ -25,9 +25,7 @@
 				<a href="javascript:;" class="btn btm">配音员入驻</a>
 			</div>
 		</div>
-		<!-- <div class="float-window-wrap">
-			<float-window></float-window>
-		</div> -->
+		
 	</div>
 </div>
 	
@@ -37,7 +35,6 @@ import NavBar from 'components/nav-bar/nav-bar';
 import FooterBar from 'components/footer-bar/footer-bar';
 import SlideSearch from 'components/slide-search/slide-search';
 import Carousel from 'components/carousel/carousel';
-/* import FloatWindow from 'components/float-window/float-window'; */
 /* import { handlerNav } from 'assets/js/mixins'; */
 export default {
 	/* mixins: [ handlerNav ], */
@@ -74,11 +71,7 @@ export default {
 <style scoped lang="scss">
 @import "~assets/scss/variable";
 @import "~assets/scss/mixin";
-.float-window-wrap {
-	position: fixed;
-	right: 30px;
-	bottom: 40px;
-}
+
 .nav-bar-wrap {
 	
 }

@@ -9,57 +9,57 @@
 				<div class="form-wrap">
 					<!--从这里开始-->
 					<div class="form_content">
-						<div class="language">
+						<!-- <div class="language">
 							<h3>语种</h3>
 							<p class="lang">
 								<span>普通话</span>
 								<span>外语/小语种</span>
 								<span>方言/民族语</span>
 							</p>
-						</div>
+						</div> -->
 						<!--级别-->
 						<div class="rank">
 							<h3>级别</h3>
 							<a-select defaultValue="优质主播"
 									  size="large"
-									style="width: 100%">
-								<a-select-option v-for="i in levels" :key="i.label">
+									style="width: 100%" @change="selectChange">
+								<a-select-option v-for="i in levels" :key="i.value">
 									{{i.label}}
 								</a-select-option>
 							</a-select>
-							<p class="rank_description">1系最高，7系最低，另有V系为特约老师，需预约</p>
+							<!-- <p class="rank_description">1系最高，7系最低，另有V系为特约老师，需预约</p> -->
 						</div>
 						<!--稿件类型-->
-						<div class="rank">
-							<h3>稿件类型</h3>
-							<a-select defaultValue="普通话"
+						<!-- <div class="rank">
+							<h3>语速</h3>
+							<a-select defaultValue="标准语速"
 									  size="large"
 									  style="width: 100%">
 								<a-select-option v-for="i in options" :key="i.label">
 									{{i.label}}
 								</a-select-option>
 							</a-select>
-						</div>
+						</div> -->
 						<!--字数-->
 						<div class="rank">
 							<h3>字数</h3>
-							<a-input defaultValue="100"
+							<a-input v-model="form.world"
 									  size="large"
-									  style="width: 100%;border-radius: 4px"/>
+									  style="width: 100%; border-radius: 4px"/>
 							<p class="rank_description">字数统计用word或者wps的字数统计功能</p>
 						</div>
-						<a href="javascript:;" class="btn">计算</a>
+						<a href="javascript:;" class="btn" @click="computedPrice">计算</a>
 						<div class="form_number">
 							<div class="header_number">
 								<div class="number">
 									<p class="num_title">金额(元)</p>
-									<p class="num_num">1234</p>
+									<p class="num_num" v-if="price">{{price}}</p>
 								</div>
-								<div class="line"></div>
+								<!-- <div class="line"></div>
 								<div class="number">
 									<p class="num_title">时长</p>
 									<p class="num_num">12:34</p>
-								</div>
+								</div> -->
 							</div>
 							<p class="num_description">
 								此处费用仅供参考，另外大订单的价格可以再议，详情请
@@ -78,15 +78,18 @@
 	
 </template>
 <script type="text/ecmascript-6">
+import { getData } from 'api/api';
+import { handlerError } from 'assets/js/mixins';
 export default {
+	mixins: [ handlerError ],
 	data() {
 		return {
             value:'',
 			options: [{
-			value: '普通话',
+			value: '标准语速',
 			label: '普通话'
 			}, {
-			value: '颁奖类',
+			value: '快速',
 			label: '颁奖类'
 			}, {
 			value: '品牌类',
@@ -96,22 +99,39 @@ export default {
 			label: '电购类'
 			}],
 			levels: [{
-			value: '优质主播',
+			value: 0,
 			label: '优质主播'
 			}, {
-			value: '知名主播',
-			label: '知名主播'
+			value: 1,
+			label: '专业主播'
 			}, {
-			value: '顶级主播',
-			label: '顶级主播'
+			value: 2,
+			label: '知名主播'
 			}],
-			value: ''
+			form: {
+				level: 0,
+				world: 500
+			},
+			price: 0
 		}
 	},
 	created() {
+		this.computedPrice()
 	},
 	methods: {
-		
+		selectChange(value) {
+			this.form.level = value;
+		},
+		computedPrice() {
+			getData('/api/customer/demand/price', {
+				dubberLevel: this.form.level,
+				wordCount: this.form.world
+			}).then(res => {
+				this.price = res;
+			}).catch(err => {
+				this._handlerError(err)
+			})
+		}
 	},
 	components: {
 	}
@@ -218,6 +238,7 @@ export default {
 								font-size: 30px;
 								line-height: 30px;
 								margin-bottom: 0px;
+								padding-top: 20px;
 							}
 
 						}

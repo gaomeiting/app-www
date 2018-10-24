@@ -1,5 +1,5 @@
 <template>
-<div class="current" key="service">
+<div class="current">
 	<div class="content-wrap">
 		
 		<div class="slide-home-wrap">
