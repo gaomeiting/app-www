@@ -2,7 +2,7 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:33:31 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-25 09:57:51
+ * @Last Modified time: 2018-10-25 15:47:04
  */
 import Vue from "vue"
 import Router from "vue-router"
@@ -102,7 +102,21 @@ router.beforeEach((to, from, next) => {
           store.commit('SET_LOGIN', res);
           next();
         }).catch(err => {
-          handlerErrorRouter(err)
+          if (err) {
+              if(err.status == 401) {
+                  store.commit('SET_LOGOUT');
+                  store.commit('SET_LOGIN', 0)
+                  next();
+                  return;
+              }
+              if (err.message) {
+                  message.warning(err.message);
+              } else {
+                  message.warning(err.error);
+              }
+          } else {
+              message.warning('接口调试中');
+          }
         })
       }
   }
@@ -110,20 +124,5 @@ router.beforeEach((to, from, next) => {
       next();
   }
 });
-export function handlerErrorRouter(err) {
-  if (err) {
-      if(err.status == 401) {
-          store.commit('SET_LOGOUT');
-          store.commit('SET_LOGIN', 0)
-          return;
-      }
-      if (err.message) {
-          message.warning(err.message);
-      } else {
-          message.warning(err.error);
-      }
-  } else {
-      message.warning('接口调试中');
-  }
-}
+
 export default router

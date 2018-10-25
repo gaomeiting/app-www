@@ -7,10 +7,10 @@
 <template>
 <div  id="app" class="app">
   <div class="nav-bar-wrap">
-			<nav-bar :showRightNav="showRightNav" @showAlertBox="showAlertBox"></nav-bar>
+			<nav-bar :showRightNav="showRightNav" @showAlertBox="showAlertBox" :computedPrice="computedPrice"></nav-bar>
 	</div>
   <transition name="fadePage" mode="out-in">
-    <router-view @hideRightNav="hideRightNav" @showCodeBox="showAlertBox"></router-view>
+    <router-view @hideRightNav="hideRightNav" @showCodeBox="showAlertBox" @goComputedPrice="goComputedPrice"></router-view>
   </transition>
   
   <div class="footer-bar-wrap">
@@ -34,7 +34,8 @@ import AlertBox from 'components/alert/alert';
     data() {
       return {
         windowFlag: false,
-        showRightNav: true
+        showRightNav: true,
+        computedPrice: false
       }
     },
     provide(){   
@@ -62,6 +63,9 @@ import AlertBox from 'components/alert/alert';
     },
     
     methods: {
+      goComputedPrice() {
+        this.computedPrice = true;
+      },
       showAlertBox() {
         this.$refs.alertBox.show()
       },

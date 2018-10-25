@@ -43,7 +43,7 @@ import { BackTop } from 'ant-design-vue';
         },
         methods: {
             goComputedPrice() {
-               window.location.href= 'http://mp.ddpei.cn/#/computedPrice';
+               this.$emit('goComputedPrice', 2);
             },
             goTask() {
                 window.location.href="http://mp.ddpei.cn/dubber/"

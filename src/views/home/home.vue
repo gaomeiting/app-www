@@ -162,7 +162,7 @@ export default {
 		}
 	},
 	created() {
-		console.log(this.$route.query.showBox)
+		console.log(window.location.href)
 		if(this.$route.query.showBox) {
 			this.$emit('showCodeBox')
 		}

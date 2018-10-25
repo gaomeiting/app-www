@@ -24,6 +24,10 @@ export default {
         showRightNav: {
             type: Boolean,
             default: true
+        },
+        computedPrice: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -42,6 +46,13 @@ export default {
     },
     computed: {
       ...mapGetters(['user'])
+    },
+    watch: {
+        computedPrice(newVal, oldVal) {
+            if(newVal) {
+                goNav(2)
+            }
+        }
     },
     methods: {
         showAlertBox() {

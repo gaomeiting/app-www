@@ -3,7 +3,7 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:58:51 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-25 15:23:52
+ * @Last Modified time: 2018-10-25 16:22:27
  */
 <template>
 <div class="current">
@@ -16,7 +16,7 @@
 					<img src="./bg_01.png" alt="">
 				</div>
 			</div>
-			<div class="voice" @click.stop="selectRole(0)">
+			<div class="voice" @click.stop="selectRole(1)">
 				<h2>配音员</h2>
 				<p>让每个美好的声音都有价值</p>
 				<div class="img">
@@ -41,8 +41,11 @@ export default {
 	},
 	methods: {
 		selectRole(index) {
-			let name = index > 0 ? 'dubber' : 'customer'
-			let url = `http://mp.ddpei.cn/#/${name}`;
+			console.log(this.$route.query.userId)
+			if(!this.$route.query.userId) return;
+			let userId = this.$route.query.userId
+			let name = index > 0 ? 'dubber/#/ongoing' : `customer/#/regist?userId=${userId}`
+			let url = `http://mp.ddpei.cn/${name}`;
 			window.location.href= url;
 		},
 		hideRightNav() {
