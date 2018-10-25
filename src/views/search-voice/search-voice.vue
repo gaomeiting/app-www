@@ -22,7 +22,7 @@
 			<div class="section">
 				<h2 class="title">按下这个按钮，重启一下生活</h2>
 				<!-- <p>覆盖几乎全部题材，为您找到最合适的配音员</p> -->
-				<a href="javascript:;" class="btn btm">配音员入驻</a>
+				<a href="http://mp.ddpei.cn/dubber/" class="btn btm">配音员入驻</a>
 			</div>
 		</div>
 		

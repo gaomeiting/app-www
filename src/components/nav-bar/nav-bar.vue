@@ -48,7 +48,7 @@ export default {
             this.$emit('showAlertBox')
         },
         handlerUser() {
-            if(!this.user) {
+            /* if(!this.user) {
                 //未登录，没有扫码 -1
                 return;
             }
@@ -63,7 +63,7 @@ export default {
             if(this.user && (this.user.includes('dubber-person') || this.user.includes('dubber-team'))) {
                 //配音员 2
                 return;
-            }
+            } */
             
         },
         initCurrentIndex() {

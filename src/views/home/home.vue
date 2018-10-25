@@ -37,7 +37,7 @@
 						</figure>
 					</li>
 				</ul>
-				<a href="javascript:;" class="btn">发布需求</a>
+				<a href="http://mp.ddpei.cn/customer/" class="btn">发布需求</a>
 			</div>
 		</div>
 		<div class="section-wrap">
@@ -114,6 +114,7 @@ import { postData } from 'api/api';
 import SlideHome from 'components/slide-home/slide-home';
 import Carousel from 'components/carousel/carousel';
 export default {
+	inject:['refresh'],
 	data() {
 		return {
 			icons: [
@@ -161,6 +162,10 @@ export default {
 		}
 	},
 	created() {
+		console.log(this.$route.query.showBox)
+		if(this.$route.query.showBox) {
+			this.$emit('showCodeBox')
+		}
 	},
 	methods: {
 		submitForm() {

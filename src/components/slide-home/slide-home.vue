@@ -10,7 +10,7 @@
                     <li>24小时客服热线</li>
                     <li>配音员免费给您试音</li>
                 </ul>
-                <a href="javascript:;" class="btn">发布需求</a>
+                <a href="http://mp.ddpei.cn/customer/" class="btn">发布需求</a>
             </div>
             <figure>
                 <img src="./bg.png" alt="">

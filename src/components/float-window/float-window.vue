@@ -1,7 +1,7 @@
 <template>
     <section class="float-window" ref="box">
         <ul>
-            <li>
+            <li @click.stop="goTask">
                 <i class="iconfont icon-shandian"></i>
                 <p>快 速 <br>配 音</p>
             </li>
@@ -13,14 +13,14 @@
             </li>
             <li>
                 
-                <a href="/computedPrice">
+                <a href="javascript:;" @click.stop="goComputedPrice">
                 <i class="iconfont icon-jisuanqi"></i>
                 <p>价 格 <br>计 算</p>
                 </a>
             </li>
             <transition name="fade" mode="out-in">
             <li v-if="flag" @click.stop.prevent="scrollTop" :key="0">
-                <a href="/computedPrice">
+                <a href="javascript:;" @click.stop="goComputedPrice">
                 <i class="iconfont icon-huidaodingbu"></i>
                 <p>回 到 <br>顶 部</p>
                 </a>
@@ -42,7 +42,12 @@ import { BackTop } from 'ant-design-vue';
             }
         },
         methods: {
-            
+            goComputedPrice() {
+               window.location.href= 'http://mp.ddpei.cn/#/computedPrice';
+            },
+            goTask() {
+                window.location.href="http://mp.ddpei.cn/dubber/"
+            },
             scrollTop() {
                 document.documentElement.scrollTop = 0;
             }

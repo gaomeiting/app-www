@@ -7,7 +7,7 @@
                 <ul>
                     <li>成立于2000年，至今服务过上百个国内国际知名品牌！</li>
                 </ul>
-                <a href="javascript:;" class="btn">配音员入驻</a>
+                <a href="http://mp.ddpei.cn/dubber/" class="btn">配音员入驻</a>
             </div>
             <figure>
                 <img src="./bg.png" alt="">

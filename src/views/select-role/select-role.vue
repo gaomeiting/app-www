@@ -3,20 +3,20 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:58:51 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-22 18:31:47
+ * @Last Modified time: 2018-10-25 15:23:52
  */
 <template>
 <div class="current">
 	<div class="content-wrap">
 		<div class="select-role-plain">
-			<div class="user">
+			<div class="user" @click.stop="selectRole(0)">
 				<h2>客户</h2>
 				<p>精准、便捷的对接最合适的配音员</p>
 				<div class="img">
 					<img src="./bg_01.png" alt="">
 				</div>
 			</div>
-			<div class="voice">
+			<div class="voice" @click.stop="selectRole(0)">
 				<h2>配音员</h2>
 				<p>让每个美好的声音都有价值</p>
 				<div class="img">
@@ -40,6 +40,11 @@ export default {
 		this.hideRightNav()
 	},
 	methods: {
+		selectRole(index) {
+			let name = index > 0 ? 'dubber' : 'customer'
+			let url = `http://mp.ddpei.cn/#/${name}`;
+			window.location.href= url;
+		},
 		hideRightNav() {
 			this.$emit('hideRightNav')
 		}

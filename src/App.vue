@@ -2,7 +2,7 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:34:25 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-24 19:13:48
+ * @Last Modified time: 2018-10-25 14:46:33
  */
 <template>
 <div  id="app" class="app">
@@ -10,7 +10,7 @@
 			<nav-bar :showRightNav="showRightNav" @showAlertBox="showAlertBox"></nav-bar>
 	</div>
   <transition name="fadePage" mode="out-in">
-    <router-view @hideRightNav="hideRightNav"></router-view>
+    <router-view @hideRightNav="hideRightNav" @showCodeBox="showAlertBox"></router-view>
   </transition>
   
   <div class="footer-bar-wrap">
@@ -37,6 +37,11 @@ import AlertBox from 'components/alert/alert';
         showRightNav: true
       }
     },
+    provide(){   
+       return {  
+          refresh: this.refresh
+        }
+    },
     created() {
       let state = this.$route.query.redirect || '/';
       this.$nextTick(() => {
@@ -50,6 +55,7 @@ import AlertBox from 'components/alert/alert';
           href: ""
         });
       })
+      
     },
     mounted () {
      this._handlerScroll();
@@ -57,7 +63,6 @@ import AlertBox from 'components/alert/alert';
     
     methods: {
       showAlertBox() {
-        console.log(123)
         this.$refs.alertBox.show()
       },
       hideRightNav() {
