@@ -18,7 +18,7 @@
 	
 </template>
 <script type="text/ecmascript-6">
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 export default {
     props: {
         showRightNav: {
@@ -59,22 +59,26 @@ export default {
             this.$emit('showAlertBox')
         },
         handlerUser() {
-            /* if(!this.user) {
+            if(!this.user) {
                 //未登录，没有扫码 -1
+                this.setStatus(-1);
                 return;
             }
             if(this.user && this.user.roles.length === 1 && this.user.roles.includes('anonymous')) {
                 //游客身份 0
+                this.setStatus(0);
                 return;
             }
-            if(this.user && (this.user.includes('customer') ||this.user.includes('customer-org') || this.user.includes('customer-person'))) {
+            if(this.user && (this.user.roles.includes('customer') ||this.user.roles.includes('customer-org') || this.user.roles.includes('customer-person'))) {
                 //需方 1
+                this.setStatus(1);
                 return;
             }
-            if(this.user && (this.user.includes('dubber-person') || this.user.includes('dubber-team'))) {
+            if(this.user && (this.user.roles.includes('dubber-person') || this.user.roles.includes('dubber-team'))) {
                 //配音员 2
+                this.setStatus(2);
                 return;
-            } */
+            }
             
         },
         initCurrentIndex() {
@@ -118,7 +122,10 @@ export default {
         goByBubber() {
             this.currentIndex = -2;
             this.$router.push('/join')
-        }
+        },
+        ...mapMutations({
+            'setStatus': 'SET_STATUS'
+        })
     }
 }
 </script>

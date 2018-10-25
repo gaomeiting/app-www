@@ -41,7 +41,6 @@ export default {
 	},
 	methods: {
 		selectRole(index) {
-			console.log(this.$route.query.userId)
 			if(!this.$route.query.userId) return;
 			let userId = this.$route.query.userId
 			let name = index > 0 ? 'dubber/#/ongoing' : `customer/#/regist?userId=${userId}`

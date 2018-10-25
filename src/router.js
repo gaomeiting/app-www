@@ -2,7 +2,7 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:33:31 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-25 15:47:04
+ * @Last Modified time: 2018-10-25 20:50:32
  */
 import Vue from "vue"
 import Router from "vue-router"
@@ -74,6 +74,10 @@ routes.forEach(route => {
 if (window.localStorage.getItem('user')) {
   let user = JSON.parse(window.localStorage.getItem('user'))
       store.commit('SET_LOGIN', user)
+}
+if (window.localStorage.getItem('status')) {
+  let status = JSON.parse(window.localStorage.getItem('status'))
+      store.commit('SET_STATUS', status)
 }
 const router = new Router({
   routes,
