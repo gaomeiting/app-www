@@ -9,10 +9,11 @@ export function handlerError(err) {
     if (err) {
         if(err.status == 401) {
             store.commit('SET_LOGOUT');
-            router.replace({
+            store.commit('SET_LOGIN', 0)
+            /* router.replace({
                 path: '/login',
                 query: {redirect: router.currentRoute.fullPath}
-            })
+            }) */
             return;
         }
         if(err.details) {

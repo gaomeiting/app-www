@@ -1,3 +1,5 @@
+
+import store from "../../store"
 import {
     message
 } from 'ant-design-vue';
@@ -69,9 +71,8 @@ export const handlerError = {
 			let error = '';
 			if (err) {
 				if(err.status === 401) {
-					let statu = `#${this.$route.path}`
-					let url = err.message.replace('{STATE}', encodeURIComponent(statu))
-					window.location.href = url;
+					store.commit('SET_LOGOUT');
+					store.commit('SET_LOGIN', 0)
 					return;
 				}
 				if (err.message) {

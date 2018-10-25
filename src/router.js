@@ -2,7 +2,7 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:33:31 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-24 19:30:20
+ * @Last Modified time: 2018-10-25 09:57:51
  */
 import Vue from "vue"
 import Router from "vue-router"
@@ -10,6 +10,9 @@ import store from './store'
 import {
   getDataHide
 } from 'api/api'
+import {
+  message
+} from 'ant-design-vue';
 Vue.use(Router);
 const routes = [{
   path: '*',
@@ -70,7 +73,7 @@ routes.forEach(route => {
 });
 if (window.localStorage.getItem('user')) {
   let user = JSON.parse(window.localStorage.getItem('user'))
-store.commit('SET_LOGIN', user)
+      store.commit('SET_LOGIN', user)
 }
 const router = new Router({
   routes,
@@ -90,13 +93,12 @@ router.beforeEach((to, from, next) => {
     document.title = title;
   }
   if (to.matched.some(r => r.meta.requireAuth)) {
-      if (store.state.user) {
+      if (store.state.user != null) {
           next();
       }
       else {
         getDataHide('/api/user/userinfo').then(res => {
           //window.alert(res.uid)
-          console.log(res)
           store.commit('SET_LOGIN', res);
           next();
         }).catch(err => {
@@ -112,6 +114,8 @@ export function handlerErrorRouter(err) {
   if (err) {
       if(err.status == 401) {
           store.commit('SET_LOGOUT');
+          store.commit('SET_LOGIN', 0)
+          return;
       }
       if (err.message) {
           message.warning(err.message);
