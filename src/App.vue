@@ -2,7 +2,7 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:34:25 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-25 14:46:33
+ * @Last Modified time: 2018-10-26 15:47:13
  */
 <template>
 <div  id="app" class="app">
@@ -29,7 +29,7 @@ import NavBar from 'components/nav-bar/nav-bar';
 import FooterBar from 'components/footer-bar/footer-bar';
 import FloatWindow from 'components/float-window/float-window';
 import AlertBox from 'components/alert/alert';
-
+import { BASE_URL } from 'api/config';
   export default {
     data() {
       return {
@@ -50,7 +50,7 @@ import AlertBox from 'components/alert/alert';
           id:"login_container",
           appid: "wx488c5ae325198186",
           scope: "snsapi_login",
-          redirect_uri: encodeURI("http://mp.ddpei.cn/api/user/wechat/auth") ,
+          redirect_uri: encodeURI(`${BASE_URL}/api/user/wechat/auth`) ,
           state,
           style: "black",      
           href: ""

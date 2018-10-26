@@ -1,6 +1,7 @@
 
 import store from "../../store"
 import { mapGetters } from 'vuex';
+import { BASE_URL } from 'api/config';
 import {
     message
 } from 'ant-design-vue';
@@ -123,7 +124,7 @@ export const handlerStatus = {
                 message.warning('你还不是需求方,不能发布需求');
                 return;
             }
-            window.location.href= 'http://mp.ddpei.cn/customer/'
+            window.location.href= `${BASE_URL}/customer/`
 		}
     }
 }

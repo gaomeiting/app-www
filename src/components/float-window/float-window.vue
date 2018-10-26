@@ -34,6 +34,7 @@
 </template>
 <script type="text/ecmascript-6">
 import { BackTop } from 'ant-design-vue';
+import { BASE_URL } from 'api/config';
     export default {
         props: {
             flag : {
@@ -47,7 +48,7 @@ import { BackTop } from 'ant-design-vue';
                /* this.$emit('goComputedPrice', 2); */
             },
             goTask() {
-                window.location.href="http://mp.ddpei.cn/dubber/"
+                window.location.href=`${BASE_URL}/dubber/`
             },
             scrollTop() {
                 document.documentElement.scrollTop = 0;

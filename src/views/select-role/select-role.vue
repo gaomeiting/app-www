@@ -3,7 +3,7 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:58:51 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-25 16:22:27
+ * @Last Modified time: 2018-10-26 15:53:25
  */
 <template>
 <div class="current">
@@ -29,7 +29,7 @@
 </div>
 </template>
 <script type="text/ecmascript-6">
-
+import { BASE_URL } from 'api/config';
 export default {
 	data() {
 		return {
@@ -44,7 +44,7 @@ export default {
 			if(!this.$route.query.userId) return;
 			let userId = this.$route.query.userId
 			let name = index > 0 ? 'dubber/#/code' : `customer/#/regist?userId=${userId}`
-			let url = `http://mp.ddpei.cn/${name}`;
+			let url = `${BASE_URL}/${name}`;
 			window.location.href= url;
 		},
 		hideRightNav() {
