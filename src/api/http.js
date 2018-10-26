@@ -19,11 +19,14 @@ axios.defaults.timeout = 5000;
 let loading
 
 function startLoading() {
-    loading = message.loading('loading', 0)
+    /* loading = message.loading('loading', 0) */
+    message.loading('loading', 0)
 }
 
 function endLoading() {
-    setTimeout(loading, 0);
+    /* setTimeout(loading, 0); */
+    message.destroy()
+    
 }
 
 
