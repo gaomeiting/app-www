@@ -81,7 +81,6 @@ export default {
 			return (1 + this.config.index / 4) * parentWidth
 		},
 		prev() {
-			console.log("1232344")
 			this.pauseTimer()
 			if (this.config.index > 0) {
 				this.config.index--

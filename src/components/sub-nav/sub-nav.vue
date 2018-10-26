@@ -25,7 +25,6 @@ export default {
     },
     methods: {
         selectItem(index) {
-            console.log(index)
             this.$emit('selectItem', index);
         }
     }

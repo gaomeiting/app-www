@@ -1,5 +1,6 @@
 
 import store from "../../store"
+import { mapGetters } from 'vuex';
 import {
     message
 } from 'ant-design-vue';
@@ -96,8 +97,7 @@ export const handlerNav = {
 	methods: {
 		goNav(index) {
 			this.currentNavIndex = index;
-			console.log('goNav')
-            switch (index) {
+			switch (index) {
                 case 0:
                     this.$router.push('/service');
                     break;
@@ -111,4 +111,19 @@ export const handlerNav = {
             }
 		}
 	}
+}
+
+export const handlerStatus = {
+	computed: {
+        ...mapGetters(['status'])
+    },
+	methods: {
+        goCustomer() {
+            if(this.status != 1) {
+                message.warning('你还不是需求方,不能发布需求');
+                return;
+            }
+            window.location.href= 'http://mp.ddpei.cn/customer/'
+		}
+    }
 }

@@ -37,7 +37,7 @@
 						</figure>
 					</li>
 				</ul>
-				<a href="http://mp.ddpei.cn/customer/" class="btn">发布需求</a>
+				<a href="javascript:void(0)" class="btn"  @click="goCustomer()">发布需求</a>
 			</div>
 		</div>
 		<div class="section-wrap">
@@ -113,8 +113,13 @@ import { handlerError } from 'api/catch';
 import { postData } from 'api/api';
 import SlideHome from 'components/slide-home/slide-home';
 import Carousel from 'components/carousel/carousel';
+import { handlerStatus } from 'assets/js/mixins'
+import {
+    message
+} from 'ant-design-vue';
 export default {
 	inject:['refresh'],
+	mixins: [ handlerStatus ],
 	data() {
 		return {
 			icons: [
@@ -162,7 +167,6 @@ export default {
 		}
 	},
 	created() {
-		console.log(window.location.href)
 		if(this.$route.query.showBox) {
 			this.$emit('showCodeBox')
 		}
@@ -176,7 +180,7 @@ export default {
 					email: this.form.email,
 					demandContent: this.form.demand
 			}).then(() => {
-				console.log("成功")
+				message.success('你的意见已反馈,我们会尽快处理')
 			}).catch(err => {
 				handlerError(err)
 			})

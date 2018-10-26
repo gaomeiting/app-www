@@ -65,8 +65,7 @@ methods: {
             moveX = x - this.distance;
           this.distance += moveX;
           this.countNum(this.distance);
-          console.log(this.startNum, this.endNum, this.nowNum)
-
+        
         },
         countNum(num) {
         	let maxLen = this.dragWidth - BTNWIDTH

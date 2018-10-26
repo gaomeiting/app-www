@@ -48,7 +48,7 @@ export default {
 			window.location.href= url;
 		},
 		hideRightNav() {
-			this.$emit('hideRightNav')
+			/* this.$emit('hideRightNav') */
 		}
 	},
 	components: {
