@@ -1,8 +1,8 @@
 /*
  * @Author: Cicy 
  * @Date: 2018-10-22 17:35:23 
- * @Last Modified by:   Cicy.gao 
- * @Last Modified time: 2018-10-22 17:35:23 
+ * @Last Modified by: Cicy.gao
+ * @Last Modified time: 2018-10-26 15:03:55
  */
 
 /*css reset*/
@@ -30,6 +30,7 @@ audio:not([controls]) {
 [hidden],template {  display: none;}
 a {  background-color: transparent;}
 a:active,a:hover {  outline: 0;}
+a:link, a:visited, a:visited, a:hover, a:active { text-decoration:none; }
 abbr[title] {  border-bottom: 1px dotted;}
 b,strong {  font-weight: normal;}
 dfn {  font-style: italic;}

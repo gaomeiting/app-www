@@ -43,9 +43,9 @@
 						<!--字数-->
 						<div class="rank">
 							<h3>字数</h3>
-							<a-input v-model="form.world"
+							<a-input-number v-model="form.world"
 									  size="large"
-									  style="width: 100%; border-radius: 4px"/>
+									  style="width: 100%; border-radius: 4px" />
 							<p class="rank_description">字数统计用word或者wps的字数统计功能</p>
 						</div>
 						<a href="javascript:;" class="btn" @click="computedPrice">计算</a>
@@ -63,7 +63,7 @@
 							</div>
 							<p class="num_description">
 								此处费用仅供参考，另外大订单的价格可以再议，详情请
-								<span class="num_to_click">咨询客服</span>
+								<a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODE5MjQ4NF80NDM2MDhfNDAwOTY4Njg2MF8yXw" target="_blank"><span class="num_to_click">咨询客服</span></a>
 							</p>
 						</div>
 					</div>
@@ -249,6 +249,7 @@ export default {
 					}
 					.num_description{
 						text-align: center;
+						a:link, a:visited, a:visited, a:hover, a:active { text-decoration:none; }
 						.num_to_click{
 							color: #E5A803;
 							font-size: 14px;

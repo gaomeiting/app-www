@@ -8,7 +8,7 @@ import {
     message
 } from 'ant-design-vue';
 message.config({
-    top: '46%'
+    top: '42%'
 });
 // axios 配置
 axios.defaults.timeout = 5000;

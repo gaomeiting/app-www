@@ -25,6 +25,19 @@ export function debounce (fn, delay) {
 	}
 	
 }
+/* export function debounce(action, delay) {
+    var timer = null;
+    
+    return function() {
+        var self = this, 
+              args = arguments;
+              
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+            action.apply(self, args)
+        }, delay);
+    }
+} */
 export function formatTime(time) {
 	let dateTimeStamp = new Date(time).getTime()
 	let minute = 1000 * 60;
