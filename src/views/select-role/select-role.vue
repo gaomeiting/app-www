@@ -43,7 +43,7 @@ export default {
 		selectRole(index) {
 			if(!this.$route.query.userId) return;
 			let userId = this.$route.query.userId
-			let name = index > 0 ? 'dubber/#/ongoing' : `customer/#/regist?userId=${userId}`
+			let name = index > 0 ? 'dubber/#/code' : `customer/#/regist?userId=${userId}`
 			let url = `http://mp.ddpei.cn/${name}`;
 			window.location.href= url;
 		},
