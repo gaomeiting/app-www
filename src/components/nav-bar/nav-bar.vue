@@ -92,7 +92,7 @@ export default {
         },
         goHome() {
             this.currentIndex = -1;
-            window.location.href = ('/')
+            window.location.href = ('/home.html')
         },
         goByBubber() {
             this.currentIndex = -2;

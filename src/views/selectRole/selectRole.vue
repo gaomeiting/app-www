@@ -2,7 +2,7 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:34:25 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-29 16:05:51
+ * @Last Modified time: 2018-10-29 17:00:58
  */
 <template>
 <div  id="app" class="app">
@@ -10,7 +10,7 @@
 			<nav-bar :showRightNav="showRightNav" @showAlertBox="showAlertBox" :computedPrice="computedPrice"></nav-bar>
 	</div>
   <transition name="fadePage" mode="out-in">
-    <computed-view @hideRightNav="hideRightNav" @showCodeBox="showAlertBox" @goComputedPrice="goComputedPrice"></computed-view>
+    <select-role @hideRightNav="hideRightNav" @showCodeBox="showAlertBox" @goComputedPrice="goComputedPrice"></select-role>
   </transition>
   
   <div class="footer-bar-wrap">
@@ -28,7 +28,7 @@
 import NavBar from 'components/nav-bar/nav-bar';
 import FooterBar from 'components/footer-bar/footer-bar';
 import FloatWindow from 'components/float-window/float-window';
-import ComputedView from 'views/computedPrice/computedPrice-view';
+import SelectRole from 'views/selectRole/selectRole-view';
 import AlertBox from 'components/alert/alert';
 import { getQueryString } from 'assets/js/until';
 import { BASE_URL } from 'api/config';
@@ -91,7 +91,7 @@ import { BASE_URL } from 'api/config';
       FooterBar,
       FloatWindow,
 	  AlertBox,
-	  ComputedView
+	  SelectRole
     }
   }
 </script>
