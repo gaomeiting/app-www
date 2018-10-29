@@ -18,7 +18,8 @@
 	
 </template>
 <script type="text/ecmascript-6">
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters } from 'vuex';
+import { initUser } from 'assets/js/user';
 export default {
     props: {
         showRightNav: {
@@ -28,6 +29,10 @@ export default {
         computedPrice: {
             type: Boolean,
             default: false
+        },
+        currentIndex: {
+            type: Number,
+            default: -1
         }
     },
     data() {
@@ -36,51 +41,21 @@ export default {
                 {name: '服务介绍'},
                 {name: '寻找声音'},
                 {name: '价格估算'}
-            ],
-            currentIndex: -1
+            ]
         }
     },
     created() {
-        this.initCurrentIndex();
-        this.handlerUser()
+        /* this.initCurrentIndex(); */
+        initUser();
     },
     computed: {
-      ...mapGetters(['user'])
-    },
-    watch: {
-        computedPrice(newVal, oldVal) {
-            if(newVal) {
-                goNav(2)
-            }
-        }
+        ...mapGetters(['user'])
     },
     methods: {
         showAlertBox() {
             this.$emit('showAlertBox')
         },
-        handlerUser() {
-            if(!this.user) {
-                //未登录，没有扫码 -1
-                this.setStatus(-1);
-                return;
-            }
-            if(this.user && this.user.roles.length === 1 && this.user.roles.includes('anonymous')) {
-                //游客身份 0
-                this.setStatus(0);
-                return;
-            }
-            if(this.user && (this.user.roles.includes('customer') ||this.user.roles.includes('customer-org') || this.user.roles.includes('customer-person'))) {
-                //需方 1
-                this.setStatus(1);
-                return;
-            }
-            if(this.user && (this.user.roles.includes('dubber-person') || this.user.roles.includes('dubber-team'))) {
-                //配音员 2
-                this.setStatus(2);
-                return;
-            }
-            
-        },
+        
         initCurrentIndex() {
             let hash = window.location.hash;
             switch (hash) {
@@ -104,28 +79,25 @@ export default {
             this.currentIndex = index;
             switch (index) {
                 case 0:
-                    this.$router.push('/service');
+                    window.location.href = ('/service.html');
                     break;
                 case 1:
-                    this.$router.push('/searchVoice');
+                    window.location.href = ('/searchVoice.html');
                     break;
                 case 2:
-                    this.$router.push('/computedPrice');
+                    window.location.href = ('/computedPrice.html');
                     break;
                 
             }
         },
         goHome() {
             this.currentIndex = -1;
-            this.$router.push('/')
+            window.location.href = ('/')
         },
         goByBubber() {
             this.currentIndex = -2;
-            this.$router.push('/join')
-        },
-        ...mapMutations({
-            'setStatus': 'SET_STATUS'
-        })
+            window.location.href = '/searchVoice.html'
+        }
     }
 }
 </script>

@@ -2,15 +2,15 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:34:25 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-26 15:47:13
+ * @Last Modified time: 2018-10-29 16:05:04
  */
 <template>
 <div  id="app" class="app">
   <div class="nav-bar-wrap">
-			<nav-bar :showRightNav="showRightNav" @showAlertBox="showAlertBox" :computedPrice="computedPrice"></nav-bar>
+			<nav-bar :showRightNav="showRightNav" @showAlertBox="showAlertBox" :computedPrice="computedPrice" :currentIndex="2"></nav-bar>
 	</div>
   <transition name="fadePage" mode="out-in">
-    <router-view @hideRightNav="hideRightNav" @showCodeBox="showAlertBox" @goComputedPrice="goComputedPrice"></router-view>
+    <computed-view @hideRightNav="hideRightNav" @showCodeBox="showAlertBox" @goComputedPrice="goComputedPrice"></computed-view>
   </transition>
   
   <div class="footer-bar-wrap">
@@ -28,7 +28,9 @@
 import NavBar from 'components/nav-bar/nav-bar';
 import FooterBar from 'components/footer-bar/footer-bar';
 import FloatWindow from 'components/float-window/float-window';
+import ComputedView from 'views/computedPrice/computedPrice-view';
 import AlertBox from 'components/alert/alert';
+import { getQueryString } from 'assets/js/until';
 import { BASE_URL } from 'api/config';
   export default {
     data() {
@@ -44,7 +46,7 @@ import { BASE_URL } from 'api/config';
         }
     },
     created() {
-      let state = this.$route.query.redirect || '/';
+      let state = getQueryString('redirect');
       this.$nextTick(() => {
         let obj = new WxLogin ({
           id:"login_container",
@@ -88,7 +90,8 @@ import { BASE_URL } from 'api/config';
       NavBar,
       FooterBar,
       FloatWindow,
-      AlertBox
+	  AlertBox,
+	  ComputedView
     }
   }
 </script>

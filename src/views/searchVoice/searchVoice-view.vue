@@ -35,9 +35,7 @@ import NavBar from 'components/nav-bar/nav-bar';
 import FooterBar from 'components/footer-bar/footer-bar';
 import SlideSearch from 'components/slide-search/slide-search';
 import Carousel from 'components/carousel/carousel';
-/* import { handlerNav } from 'assets/js/mixins'; */
 export default {
-	/* mixins: [ handlerNav ], */
 	data() {
 		return {
 			icons: [

@@ -2,16 +2,17 @@
  * @Author: Cicy 
  * @Date: 2018-10-22 17:34:25 
  * @Last Modified by: Cicy.gao
- * @Last Modified time: 2018-10-29 15:12:56
+ * @Last Modified time: 2018-10-29 16:05:30
  */
 <template>
 <div  id="app" class="app">
   <div class="nav-bar-wrap">
-			<nav-bar :showRightNav="showRightNav" @showAlertBox="showAlertBox" :computedPrice="computedPrice"></nav-bar>
+			<nav-bar :showRightNav="showRightNav" @showAlertBox="showAlertBox" :computedPrice="computedPrice" :currentIndex="navIndex"></nav-bar>
 	</div>
   <transition name="fadePage" mode="out-in">
-    <home-view @hideRightNav="hideRightNav" @showCodeBox="showAlertBox" @goComputedPrice="goComputedPrice" :currentIndex="0"></home-view>
+    <search-voice @hideRightNav="hideRightNav" @showCodeBox="showAlertBox" @goComputedPrice="goComputedPrice"></search-voice>
   </transition>
+  
   <div class="footer-bar-wrap">
     <footer-bar></footer-bar>
   </div>
@@ -27,16 +28,17 @@
 import NavBar from 'components/nav-bar/nav-bar';
 import FooterBar from 'components/footer-bar/footer-bar';
 import FloatWindow from 'components/float-window/float-window';
-import HomeView from 'views/home/home-view';
+import SearchVoice from 'views/searchVoice/searchVoice-view';
 import AlertBox from 'components/alert/alert';
-import { BASE_URL } from 'api/config';
 import { getQueryString } from 'assets/js/until';
+import { BASE_URL } from 'api/config';
   export default {
     data() {
       return {
         windowFlag: false,
         showRightNav: true,
-        computedPrice: false
+        computedPrice: false,
+        navIndex: 1
       }
     },
     provide(){   
@@ -45,7 +47,6 @@ import { getQueryString } from 'assets/js/until';
         }
     },
     created() {
-     
       let state = getQueryString('redirect');
       this.$nextTick(() => {
         let obj = new WxLogin ({
@@ -65,7 +66,6 @@ import { getQueryString } from 'assets/js/until';
     },
     
     methods: {
-     
       goComputedPrice() {
         this.computedPrice = true;
       },
@@ -92,7 +92,7 @@ import { getQueryString } from 'assets/js/until';
       FooterBar,
       FloatWindow,
 	  AlertBox,
-	  HomeView
+	  SearchVoice
     }
   }
 </script>

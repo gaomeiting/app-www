@@ -20,7 +20,7 @@
             </li>
             <transition name="fade" mode="out-in">
             <li v-if="flag" @click.stop.prevent="scrollTop" :key="0">
-                <a href="javascript:;" @click.stop="goComputedPrice">
+                <a href="javascript:;">
                 <i class="iconfont icon-huidaodingbu"></i>
                 <p>回 到 <br>顶 部</p>
                 </a>
@@ -44,7 +44,7 @@ import { BASE_URL } from 'api/config';
         },
         methods: {
             goComputedPrice() {
-                this.$router.push('/computedPrice')
+                window.location.href = '/computedPrice.html'
                /* this.$emit('goComputedPrice', 2); */
             },
             goTask() {
