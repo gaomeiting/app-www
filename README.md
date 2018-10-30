@@ -1,4 +1,4 @@
-# 微信公共号前端功能页面
+# 主站vue多页面打包
 ![Image text](https://git.ddpei.cn/ddpei/app-wechat-mp/blob/dev/public/all.jpg)
 
 ```

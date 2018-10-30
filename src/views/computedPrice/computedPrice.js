@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './computedPrice.vue'
 import store from '../../store'
 import 'assets/scss/index.scss';
+import 'babel-polyfill';
 import {message, Button, Icon, Layout, Breadcrumb, Dropdown, Menu, Pagination, Steps, DatePicker, Form, Input, InputNumber, Radio, Select, Switch, TimePicker, Upload, Avatar, Badge, Card, List, Popover,Popconfirm, Table, Tag, Tooltip, Modal, Tabs, BackTop} from 'ant-design-vue'
 Vue.config.productionTip = false
 Vue.component(Button.name, Button)
